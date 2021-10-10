@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Search = () => {
   const [values, setvalues] = useState({
@@ -6,7 +6,7 @@ const Search = () => {
   });
 
   const inputHandle = (e) => {
-    setvalues({ ...values, [e.target.name]: e.target.value });
+    setvalues({ text: e.target.value });
   };
 
   const handlSubmitForm = (e) => {
