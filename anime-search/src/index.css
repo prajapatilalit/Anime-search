@@ -51,6 +51,15 @@
   text-transform: uppercase;
   padding-bottom: 5px;
 }
+.container_div form p {
+  margin-top: 8px;
+  padding-bottom: 5px;
+  letter-spacing: 0.75px;
+}
+.container_div form p span {
+  margin-left: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
 .container_div form input {
   padding: 8px;
   margin: 8px 0px;

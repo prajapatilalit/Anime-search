@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const Login = () => {
   const [values, setvalues] = useState({
@@ -20,7 +20,7 @@ const Login = () => {
       password,
     };
     let userRecord = [];
-    userRecord = localStorage.getItem("users", JSON.parse(userRecord));
+    userRecord = JSON.parse(localStorage.getItem("users"));
     let recordFound = userRecord.some((user) => {
       return user.email === newUser.email && user.password === newUser.password;
     });
@@ -34,11 +34,9 @@ const Login = () => {
     });
   };
 
-  if (isLoggedIn) {
-    <Redirect to="/search" />;
-  }
-
-  return (
+  return isLoggedIn ? (
+    <Redirect to="/search" />
+  ) : (
     <div className="container_div">
       <form onSubmit={handlSubmitForm}>
         <h1>Login</h1>
@@ -59,6 +57,12 @@ const Login = () => {
         />
 
         <button>Login</button>
+        <p>
+          If you are not sign up. please signup here
+          <span>
+            <Link to="/signup">Signup</Link>
+          </span>
+        </p>
       </form>
     </div>
   );
