@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [values, setvalues] = useState({
@@ -20,20 +21,21 @@ const SignUp = () => {
       password,
     };
     let userRecord = [];
-    userRecord = localStorage.getItem("users", JSON.parse(userRecord))
-      ? localStorage.getItem("users", JSON.parse(userRecord))
+    userRecord = JSON.parse(localStorage.getItem("users"))
+      ? JSON.parse(localStorage.getItem("users"))
       : [];
 
-    userRecord = localStorage.setItem("users", JSON.stringify(userRecord));
-    let recordFound = userRecord.some((user) => {
-      return user.email === newUser.email && user.password === newUser.password;
-    });
+    let recordFound = userRecord.some(
+      (user) =>
+        user.fullname === newUser.fullname && user.email === newUser.email
+    );
 
     if (recordFound) {
-      console.log("You are Already Registered");
+      alert("You are Already Registered");
     } else {
       userRecord.push(newUser);
     }
+    localStorage.setItem("users", JSON.stringify(userRecord));
     setvalues({
       fullname: "",
       email: "",
@@ -51,7 +53,6 @@ const SignUp = () => {
           value={values.fullname}
           onChange={inputHandle}
         />
-        <br />
 
         <input
           type="email"
@@ -60,7 +61,6 @@ const SignUp = () => {
           value={values.email}
           onChange={inputHandle}
         />
-        <br />
 
         <input
           type="password"
@@ -69,8 +69,14 @@ const SignUp = () => {
           value={values.password}
           onChange={inputHandle}
         />
-        <br />
+
         <button>SignUp</button>
+        <p>
+          If you have already account. please signIn here
+          <span>
+            <Link to="/">SignIn</Link>
+          </span>
+        </p>
       </form>
     </div>
   );

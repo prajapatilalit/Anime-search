@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Scheherazade, "sens-serif";
 }
 
 .navbar {
@@ -9,8 +11,10 @@
   background-color: #454545;
   display: flex;
   justify-content: space-evenly;
-
-  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 20px;
 }
 
 .navbar a {
@@ -20,20 +24,64 @@
 
 .container_div {
   width: 100vw;
-  height: 500px;
+  height: 100vh;
   position: relative;
   text-align: center;
+  padding: 5px;
+}
+
+.container_div h1 {
+  font-size: 25px;
+  text-transform: uppercase;
 }
 
 .container_div form {
-  width: 20%;
-  height: 20%;
-  top: 50%;
+  width: 40%;
+  top: 0%;
   right: 50%;
-  transform: translate(50%, -50%);
+  transform: translate(50%, 50%);
   position: absolute;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+.container_div form h1 {
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+.container_div form p {
+  margin-top: 8px;
+  padding-bottom: 5px;
+  letter-spacing: 0.75px;
+}
+.container_div form p span {
+  margin-left: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 .container_div form input {
-  padding: 5px;
+  padding: 8px;
+  margin: 8px 0px;
+  font-size: 14x;
+  font-weight: 600;
   width: 100%;
+  border: none;
+  border-bottom: 2px solid brown;
+}
+
+.container_div form button {
+  width: 100%;
+  margin-top: 5px;
+  padding: 8px 15px;
+  border: none;
+  background-color: brown;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.container_div form button:hover {
+  background-color: crimson;
+  cursor: pointer;
 }
