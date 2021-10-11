@@ -15,8 +15,8 @@ const Search = () => {
 
   return (
     <div className="container_div">
-      <h1>Search</h1>
       <form onSubmit={handlSubmitForm}>
+        <h1>Search</h1>
         <input
           type="text"
           placeholder="Search by genre, titles, and description.... "

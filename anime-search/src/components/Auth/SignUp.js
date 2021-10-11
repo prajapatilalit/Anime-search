@@ -42,8 +42,8 @@ const SignUp = () => {
   };
   return (
     <div className="container_div">
-      <h1>SignUp</h1>
       <form onSubmit={handlSubmitForm}>
+        <h1>SignUp</h1>
         <input
           type="text"
           placeholder="Full name"

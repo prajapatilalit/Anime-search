@@ -40,8 +40,8 @@ const Login = () => {
 
   return (
     <div className="container_div">
-      <h1>Login</h1>
       <form onSubmit={handlSubmitForm}>
+        <h1>Login</h1>
         <input
           type="email"
           placeholder="Email"

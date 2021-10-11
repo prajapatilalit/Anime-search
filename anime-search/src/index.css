@@ -19,8 +19,21 @@
 }
 
 .container_div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
+  height: 500px;
+  position: relative;
+  text-align: center;
+}
+
+.container_div form {
+  width: 20%;
+  height: 20%;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  position: absolute;
+}
+.container_div form input {
+  padding: 5px;
+  width: 100%;
 }
