@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 
 const Login = () => {
   const [values, setvalues] = useState({
     email: "",
     password: "",
   });
+  const [isLogin, setIsLogin] = useState(false);
 
   const inputHandle = (e) => {
     setvalues({ ...values, [e.target.name]: e.target.value });
@@ -12,9 +14,27 @@ const Login = () => {
 
   const handlSubmitForm = (e) => {
     e.preventDefault();
+    const { email, password } = values;
+    let newUser = {
+      email: email,
+      password: password,
+    };
+    let userRecord = [];
+    userRecord = localStorage.getItem("users", JSON.parse(userRecord));
+    let recordFound = userRecord.some((user) => {
+      return user.email === newUser.email && user.password === newUser.password;
+    });
+
+    if (recordFound) {
+      return setIsLogin === true;
+    } else {
+      return <Redirect to="/" />;
+    }
   };
   return (
     <div>
+      {isLogin ? <Redirect to="/search" /> : <Redirect to="/" />}
+
       <form onSubmit={handlSubmitForm}>
         <label>Email</label>
         <input
