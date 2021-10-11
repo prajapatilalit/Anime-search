@@ -24,19 +24,26 @@ const SignUp = () => {
       ? localStorage.getItem("users", JSON.parse(userRecord))
       : [];
 
-    userRecord = localStorage.setItem("users", JSON.stringify(newUser));
+    userRecord = localStorage.setItem("users", JSON.stringify(userRecord));
     let recordFound = userRecord.some((user) => {
       return user.email === newUser.email && user.password === newUser.password;
     });
 
     if (recordFound) {
-      alert("You are Already Registered");
+      console.log("You are Already Registered");
+    } else {
+      userRecord.push(newUser);
     }
+    setvalues({
+      fullname: "",
+      email: "",
+      password: "",
+    });
   };
   return (
-    <div>
+    <div className="container_div">
+      <h1>SignUp</h1>
       <form onSubmit={handlSubmitForm}>
-        <label>Full Name</label>
         <input
           type="text"
           placeholder="Full name"
@@ -45,7 +52,7 @@ const SignUp = () => {
           onChange={inputHandle}
         />
         <br />
-        <label>Email</label>
+
         <input
           type="email"
           placeholder="Email"
@@ -54,7 +61,7 @@ const SignUp = () => {
           onChange={inputHandle}
         />
         <br />
-        <label>Password</label>
+
         <input
           type="password"
           placeholder="Password"

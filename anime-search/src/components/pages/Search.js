@@ -12,10 +12,11 @@ const Search = () => {
   const handlSubmitForm = (e) => {
     e.preventDefault();
   };
+
   return (
-    <div>
+    <div className="container_div">
+      <h1>Search</h1>
       <form onSubmit={handlSubmitForm}>
-        <label>Search</label>
         <input
           type="text"
           placeholder="Search by genre, titles, and description.... "
@@ -23,9 +24,6 @@ const Search = () => {
           value={values.text}
           onChange={inputHandle}
         />
-        <br />
-
-        <button>Search</button>
       </form>
     </div>
   );

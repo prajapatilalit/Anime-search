@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 
-const Login = ({ isLogin }) => {
+const Login = () => {
   const [values, setvalues] = useState({
     email: "",
     password: "",
   });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const inputHandle = (e) => {
     setvalues({ ...values, [e.target.name]: e.target.value });
@@ -25,17 +26,22 @@ const Login = ({ isLogin }) => {
     });
 
     if (recordFound) {
-      return setIsLogin === true;
-    } else {
-      return <Redirect to="/" />;
+      setIsLoggedIn(true);
     }
+    setvalues({
+      email: "",
+      password: "",
+    });
   };
-  return (
-    <div>
-      {isLogin ? <Redirect to="/search" /> : <Redirect to="/" />}
 
+  if (isLoggedIn) {
+    <Redirect to="/search" />;
+  }
+
+  return (
+    <div className="container_div">
+      <h1>Login</h1>
       <form onSubmit={handlSubmitForm}>
-        <label>Email</label>
         <input
           type="email"
           placeholder="Email"
@@ -44,7 +50,7 @@ const Login = ({ isLogin }) => {
           onChange={inputHandle}
         />
         <br />
-        <label>Password</label>
+
         <input
           type="password"
           placeholder="Password"
