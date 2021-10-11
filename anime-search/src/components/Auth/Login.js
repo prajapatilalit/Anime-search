@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
 const Login = () => {
@@ -49,7 +49,6 @@ const Login = () => {
           value={values.email}
           onChange={inputHandle}
         />
-        <br />
 
         <input
           type="password"
@@ -58,7 +57,7 @@ const Login = () => {
           value={values.password}
           onChange={inputHandle}
         />
-        <br />
+
         <button>Login</button>
       </form>
     </div>

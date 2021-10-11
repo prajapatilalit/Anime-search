@@ -51,7 +51,6 @@ const SignUp = () => {
           value={values.fullname}
           onChange={inputHandle}
         />
-        <br />
 
         <input
           type="email"
@@ -60,7 +59,6 @@ const SignUp = () => {
           value={values.email}
           onChange={inputHandle}
         />
-        <br />
 
         <input
           type="password"
@@ -69,7 +67,7 @@ const SignUp = () => {
           value={values.password}
           onChange={inputHandle}
         />
-        <br />
+
         <button>SignUp</button>
       </form>
     </div>
