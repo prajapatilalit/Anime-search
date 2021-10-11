@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router";
 
-const Search = () => {
+const Search = ({ isLoggedIn, search, handleSearch }) => {
   const [values, setvalues] = useState({
     text: "",
   });
@@ -11,9 +12,10 @@ const Search = () => {
 
   const handlSubmitForm = (e) => {
     e.preventDefault();
+    handleSearch(values.text);
   };
 
-  return (
+  return isLoggedIn ? (
     <div className="container_div">
       <form onSubmit={handlSubmitForm}>
         <h1>Search</h1>
@@ -26,6 +28,8 @@ const Search = () => {
         />
       </form>
     </div>
+  ) : (
+    <Redirect to="/" />
   );
 };
 
