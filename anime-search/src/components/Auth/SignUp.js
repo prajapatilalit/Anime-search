@@ -41,6 +41,7 @@ const SignUp = () => {
       email: "",
       password: "",
     });
+    alert("You are signup successfully");
   };
   return (
     <div className="container_div">

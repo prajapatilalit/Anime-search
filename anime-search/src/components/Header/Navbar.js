@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }) => {
   return (
     <div>
       <ul className="navbar">
         <li>
-          <Link to="/">Login</Link>
+          <Link to="/">{!isLoggedIn ? "Login" : "Logout"}</Link>
         </li>
         <li>
           <Link to="/animes">Animes</Link>
