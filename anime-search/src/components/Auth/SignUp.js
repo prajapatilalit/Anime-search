@@ -13,6 +13,25 @@ const SignUp = () => {
 
   const handlSubmitForm = (e) => {
     e.preventDefault();
+    const { fullname, email, password } = values;
+    let newUser = {
+      fullname,
+      email,
+      password,
+    };
+    let userRecord = [];
+    userRecord = localStorage.getItem("users", JSON.parse(userRecord))
+      ? localStorage.getItem("users", JSON.parse(userRecord))
+      : [];
+
+    userRecord = localStorage.setItem("users", JSON.stringify(newUser));
+    let recordFound = userRecord.some((user) => {
+      return user.email === newUser.email && user.password === newUser.password;
+    });
+
+    if (recordFound) {
+      alert("You are Already Registered");
+    }
   };
   return (
     <div>

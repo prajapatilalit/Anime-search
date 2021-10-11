@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ isLogin }) => {
   const [values, setvalues] = useState({
     email: "",
     password: "",
   });
-  const [isLogin, setIsLogin] = useState(false);
 
   const inputHandle = (e) => {
     setvalues({ ...values, [e.target.name]: e.target.value });
@@ -16,8 +15,8 @@ const Login = () => {
     e.preventDefault();
     const { email, password } = values;
     let newUser = {
-      email: email,
-      password: password,
+      email,
+      password,
     };
     let userRecord = [];
     userRecord = localStorage.getItem("users", JSON.parse(userRecord));
