@@ -1,30 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { Redirect } from "react-router";
 
-const Search = ({ isLoggedIn, search, handleSearch }) => {
-  const [values, setvalues] = useState({
-    text: "",
-  });
-
-  const inputHandle = (e) => {
-    setvalues({ text: e.target.value });
-  };
-
-  const handlSubmitForm = (e) => {
-    e.preventDefault();
-    handleSearch(values.text);
-  };
-
+const Search = ({ isLoggedIn, search, setSearch, handleSearch }) => {
   return isLoggedIn ? (
     <div className="container_div">
-      <form onSubmit={handlSubmitForm}>
+      <form onSubmit={handleSearch}>
         <h1>Search</h1>
         <input
           type="text"
           placeholder="Search by genre, titles, and description.... "
           name="fullname"
-          value={values.text}
-          onChange={inputHandle}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </form>
     </div>
