@@ -33,8 +33,6 @@ const App = () => {
       return compareText;
     });
 
-    console.log(filteredArr.slice(0, 10));
-
     setAnimeList(filteredArr.slice(0, 10));
   };
 
