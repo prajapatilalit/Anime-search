@@ -23,7 +23,7 @@ const Search = ({ isLoggedIn, search, setSearch, handleSearch, animeList }) => {
         <div className="search_list">
           {animeList.map((item) => {
             return (
-              <div key={item.mal_id}>
+              <div className="anime_item" key={item.mal_id}>
                 <img src={item.cover_image} alt="anime-pic" />
                 <p>{Object.values(item.titles)[0]}</p>
               </div>

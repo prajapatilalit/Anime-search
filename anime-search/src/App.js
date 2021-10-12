@@ -10,7 +10,7 @@ import Search from "./components/pages/Search";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [animeList, setAnimeList] = useState([]);
-  const [search, setSearch] = useState([]);
+  const [search, setSearch] = useState("");
 
   const formSubmit = () => {
     setIsLoggedIn(true);
@@ -26,12 +26,22 @@ const App = () => {
       (response) => response.json().catch((error) => console.log(error))
     );
     const animeData = res.data.documents;
-    console.log(animeData.slice(0, 10));
-    setAnimeList(animeData.slice(0, 10));
+    let filteredArr = animeData.map((anime) => {
+      let genreArr = anime.genres;
+
+      let compareText = genreArr.filter((item) => item === query);
+      return compareText;
+    });
+
+    console.log(filteredArr.slice(0, 10));
+
+    setAnimeList(filteredArr.slice(0, 10));
   };
 
   useEffect(() => {
-    fetchAnime(search);
+    if (search) {
+      fetchAnime(search);
+    }
   }, [search]);
 
   return (

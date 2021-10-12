@@ -85,3 +85,19 @@
   background-color: crimson;
   cursor: pointer;
 }
+
+.search_list {
+  display: flex;
+  flex-wrap: wrap;
+  float: right;
+}
+
+.search_list .anime_item {
+  width: 300px;
+  height: 350px;
+  padding: 10px;
+}
+.search_list .anime_item img {
+  width: 200px;
+  height: 350px;
+}
