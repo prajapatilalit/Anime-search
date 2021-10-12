@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 // import axios from "axios";
 import Login from "./components/Auth/Login";
@@ -10,7 +10,7 @@ import Search from "./components/pages/Search";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [animeList, setAnimeList] = useState([]);
-  const [search, setSearch] = useState([]);
+  const [search, setSearch] = useState("");
 
   const formSubmit = () => {
     setIsLoggedIn(true);
@@ -22,12 +22,28 @@ const App = () => {
   };
 
   const fetchAnime = async (query) => {
-    const res = await fetch(
-      `https://api.aniapi.com/v1/anime?q=${query}&order_by=title&sort=asc&limit=10`
-    ).then((response) => response.json());
-    console.log(res.data.documents);
-    setAnimeList(res.results);
+    const res = await fetch(`https://api.aniapi.com/v1/anime?q=${query}`).then(
+      (response) => response.json().catch((error) => console.log(error))
+    );
+    const animeData = res.data.documents;
+    let filteredArr = animeData.map((anime) => {
+      let genreArr = anime.genres;
+
+      let compareText = genreArr.filter((item) => item === query);
+      return compareText;
+    });
+
+    console.log(filteredArr.slice(0, 10));
+
+    setAnimeList(filteredArr.slice(0, 10));
   };
+
+  useEffect(() => {
+    if (search) {
+      fetchAnime(search);
+    }
+  }, [search]);
+
   return (
     <BrowserRouter>
       <Navbar isLoggedIn={isLoggedIn} />
