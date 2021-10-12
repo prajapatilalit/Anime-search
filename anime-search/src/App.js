@@ -26,7 +26,7 @@ const App = () => {
       (response) => response.json().catch((error) => console.log(error))
     );
     const animeData = res.data.documents;
-    let filteredArr = animeData.map((anime) => {
+    let filteredArr = animeData.filter((anime) => {
       let genreArr = anime.genres;
 
       let compareText = genreArr.filter((item) => item === query);
