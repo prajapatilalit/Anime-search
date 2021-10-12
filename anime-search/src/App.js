@@ -19,6 +19,7 @@ const App = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     fetchAnime(search);
+    setSearch("");
   };
 
   const fetchAnime = async (query) => {
