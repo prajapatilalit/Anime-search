@@ -6,7 +6,7 @@ const Navbar = ({ isLoggedIn }) => {
     <div>
       <ul className="navbar">
         <li>
-          <Link to="/">{!isLoggedIn ? "Login" : "Logout"}</Link>
+          {!isLoggedIn ? <Link to="/">Login</Link> : <Link to="/">Logout</Link>}
         </li>
         <li>
           <Link to="/animes">Animes</Link>

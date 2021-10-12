@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/SignUp";
 import Navbar from "./components/Header/Navbar";
+import Anime from "./components/pages/Anime";
 import Animes from "./components/pages/Animes";
 import Search from "./components/pages/Search";
 
@@ -50,7 +51,9 @@ const App = () => {
         <Route exact path="/">
           <Login isLoggedIn={isLoggedIn} formSubmit={formSubmit} />
         </Route>
-        <Route path="/animes" component={Animes} />
+        <Route path="/animes">
+          <Animes animeList={animeList} />
+        </Route>
         <Route path="/signup" component={SignUp} />
         <Route path="/search">
           <Search
@@ -62,7 +65,7 @@ const App = () => {
           />
         </Route>
         <Route path="/search/:id">
-          <Animes animeList={animeList} />
+          <Anime />
         </Route>
       </Switch>
     </BrowserRouter>
