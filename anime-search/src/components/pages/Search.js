@@ -1,20 +1,37 @@
 import React from "react";
 import { Redirect } from "react-router";
+// import { Link } from "react-router-dom";
 
-const Search = ({ isLoggedIn, search, setSearch, handleSearch }) => {
+const Search = ({ isLoggedIn, search, setSearch, handleSearch, animeList }) => {
   return isLoggedIn ? (
-    <div className="container_div">
-      <form onSubmit={handleSearch}>
-        <h1>Search</h1>
-        <input
-          type="text"
-          placeholder="Search by genre, titles, and description.... "
-          name="fullname"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </form>
-    </div>
+    <>
+      <div className="container_div">
+        <form onSubmit={handleSearch}>
+          <h1>Search</h1>
+          <input
+            type="text"
+            placeholder="Search by genre, titles, and description.... "
+            name="fullname"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </form>
+      </div>
+      {animeList.length === 0 ? (
+        ""
+      ) : (
+        <div className="search_list">
+          {animeList.map((item) => {
+            return (
+              <div key={item.mal_id}>
+                <img src={item.cover_image} alt="anime-pic" />
+                <p>{Object.values(item.titles)[0]}</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </>
   ) : (
     <Redirect to="/" />
   );
