@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import axios from "axios";
+
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/SignUp";
 import Navbar from "./components/Header/Navbar";
@@ -60,6 +60,9 @@ const App = () => {
             setSearch={setSearch}
             animeList={animeList}
           />
+        </Route>
+        <Route path="/search/:id">
+          <Animes animeList={animeList} />
         </Route>
       </Switch>
     </BrowserRouter>
